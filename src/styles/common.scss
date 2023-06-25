@@ -1,0 +1,119 @@
+@import "./_mixin";
+@import "./_theme";
+
+.flex-fill {
+    flex: 1;
+    @include set-flex(2);
+    @include set-flex(3);
+    @include set-flex(4);
+    @include set-flex(5);
+    @include set-flex(6);
+    @include set-flex(7);
+    @include set-flex(8);
+    @include set-flex(9);
+}
+
+div:has(>.oasismenu) {
+    z-index: 9998 !important;
+}
+
+.oasismenu {
+    background-color: #0e101ecc;
+    border-color: #fff1;
+    backdrop-filter: blur(4px);
+    max-height: calc(100dvh - 100px);
+
+    &>div:has(> .oasisitem) {
+        padding-block: 1px;
+    }
+
+    .oasisitem {
+        background-color: #ffffff06;
+
+        &:disabled {
+            background-color: #0004;
+        }
+
+        &:not(:disabled).oasishovered {
+            background-color: #fff2;
+        }
+    }
+
+    .oasisTopic {
+        color: $textColor2;
+        font-size: 14px;
+        font-weight: 600;
+        width: 100%;
+        padding: 8px 16px;
+    }
+}
+
+.tippy-box[data-theme~='tippy-theme'] {
+    background-color: #000000aa;
+    backdrop-filter: blur(2px);
+    padding: 4px 8px;
+    border-radius: 5px;
+    border: 1px solid #fff1;
+    box-shadow: 0 0 10px 5px #0007;
+    font-weight: 600;
+}
+
+
+button.round {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 125%;
+    flex-wrap: nowrap;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    transition: 0.2s;
+
+    &:disabled {
+        opacity: 0.7;
+        background-color: #0003;
+    }
+
+    &.small {
+        width: 30px;
+        height: 30px;
+    }
+
+    &.big {
+        width: 50px;
+        height: 50px;
+    }
+
+    &.scale {
+        scale: 1.1;
+    }
+
+    &:not(:disabled) {
+
+        &.unique {
+            background-color: #fff1;
+        }
+
+        &:is(:hover, :focus-visible) {
+            cursor: pointer;
+            background-color: #fff2;
+        }
+    }
+}
+
+
+.flex-grid {
+    flex: 1;
+    align-self: stretch;
+    position: relative;
+
+    .flex-wrap {
+        position: absolute;
+        inset: 0;
+
+        @include create-flex();
+    }
+}

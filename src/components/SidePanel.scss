@@ -1,0 +1,51 @@
+@import "../styles/_theme";
+
+#side-panel {
+    height: calc(100dvh - 160px);
+    position: sticky;
+    top: 60px;
+    width: 240px;
+    padding: 20px 10px 20px 0;
+    overflow: hidden auto;
+
+    .title {
+        color: $textColor3;
+        font-weight: 600;
+        padding: 15px 25px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .bs-link {
+        display: block;
+        font-weight: 600;
+        font-size: 15px;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+        padding: 5px 25px;
+        text-align: left;
+        background-color: transparent;
+        color: $textColor3;
+        border: none;
+        transition: 0.2s;
+        border-radius: 0 20px 20px 0;
+
+        &:is(.active, :hover, :focus-visible) {
+            color: $textColor1;
+            cursor: pointer;
+            background-color: $rgbaBgColor25;
+        }
+    }
+
+    .add-play {
+        color: $textColor3;
+        font-size: 12px;
+        font-weight: 600;
+        padding-left: 25px;
+    }
+}

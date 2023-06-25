@@ -1,0 +1,63 @@
+@import "../../styles/_theme";
+
+dialog {
+    border: none;
+    padding: 0;
+    width: 480px;
+    background-color: $rgbaBgColor16;
+    border-radius: 10px;
+    border: 1px solid #fff2;
+
+    &[open] {
+        animation: dialog-opening 0.1s linear forwards;
+    }
+
+    &::backdrop {
+        background-color: #0007;
+        backdrop-filter: blur(2px);
+    }
+
+    &>button {
+        position: sticky;
+        top: 0;
+        left: 100%;
+        background-color: transparent;
+        color: $closeRed;
+        border-top-right-radius: 10px;
+        font-size: 20px;
+        border: none;
+        transition: 0.1s;
+        height: 1.6em;
+        width: 2em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        &:is(:hover, :focus-visible) {
+            cursor: pointer;
+            color: $textColor1;
+            background-color: $closeRed;
+        }
+    }
+
+    &>div {
+        padding: 20px;
+        margin-top: -32px;
+    }
+}
+
+@keyframes dialog-opening {
+    0% {
+        scale: 0.8;
+        opacity: 0;
+    }
+
+    70% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}

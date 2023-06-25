@@ -1,0 +1,59 @@
+@import "../../styles/_theme";
+
+.dialog-create-account {
+    text-align: center;
+    width: 400px;
+
+    .container {
+
+
+        h2 {
+            font-weight: 500;
+        }
+
+        p {
+            color: $textColor2;
+            margin-bottom: 2em;
+        }
+
+        button {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            border: none;
+            background-color: $bgColor1;
+            border: 1px solid $borderColor1;
+            border-radius: 10px;
+            margin-block: 1em;
+            transition: 0.1s;
+
+            &:not(:disabled):is(:hover, :focus-visible) {
+                cursor: pointer;
+                filter: invert(0.1);
+            }
+
+            svg {
+                scale: 1.4;
+            }
+        }
+
+        .error-holder {
+            color: $closeRed;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        footer {
+            color: $textColor3;
+            margin-top: 3em;
+            font-size: 14px;
+        }
+
+        :is(p, footer)>span {
+            font-weight: 700;
+        }
+    }
+}

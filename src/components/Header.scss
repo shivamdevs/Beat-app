@@ -1,0 +1,136 @@
+@import "../styles/_mixin";
+@import "../styles/_theme";
+
+#header {
+    @include create-flex();
+    justify-content: initial;
+    width: 100%;
+    position: sticky;
+    z-index: 1;
+    height: 60px;
+    top: 0;
+    padding: 10px 20px;
+    gap: 20px;
+
+    background-color: $rgbaBgColor25;
+    backdrop-filter: blur(8px);
+
+    .logo {
+        @include create-inline-flex();
+        gap: 20px;
+    }
+
+    .search {
+        @include create-inline-flex();
+        flex: 2;
+
+        .search-box {
+            @include create-inline-flex();
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 512px;
+            background-color: $bgColor1;
+            border: none;
+            padding: 5px 5px 5px 15px;
+            border-radius: 5px;
+            gap: 15px;
+            transition: 0.2s;
+
+            kbd {
+                margin-left: auto;
+                border: 1px solid $borderColor1;
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 4px;
+            }
+
+            svg,
+            kbd {
+                color: $textColor3;
+            }
+
+            &:is(:hover, :focus-visible) {
+                box-shadow: 0 0 0 2px #fff5 inset;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    .user-area {
+        @include create-inline-flex();
+        gap: 10px;
+
+        .login {
+            @include create-inline-flex();
+            padding: 6px 16px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: 0.2s;
+            background-color: transparent;
+            background-color: #008080aa;
+
+            &:is(:hover, :focus-visible) {
+                background-color: #008080;
+                cursor: pointer;
+            }
+        }
+
+        .user {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $rgbaBgColor19;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #fff2;
+            transition: 0.2s;
+            overflow: hidden;
+
+            &:is(:hover, :focus-visible) {
+                cursor: pointer;
+                box-shadow: 0 0 0 3px #fff7;
+            }
+        }
+    }
+}
+
+.user-profile-menu {
+    padding: 1em;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 1em;
+
+    .image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 0 2px #fff2;
+    }
+
+    .data {
+        max-width: 420px;
+
+        &>* {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .name {
+            font-weight: 600;
+        }
+
+        .email {
+            color: $textColor3;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    }
+}

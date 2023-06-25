@@ -1,0 +1,41 @@
+import React from 'react';
+
+function InputRange({
+    min = 0,
+    max = 10,
+    value = 0,
+    disabled = false,
+    onChange = null,
+    onMouseDown = null,
+}: {
+    min?: number | null,
+    max?: number | null,
+    value?: number | null,
+    disabled?: boolean,
+    onChange?: ((val: number, eve: React.ChangeEvent<HTMLInputElement>) => void) | null,
+    onMouseDown?: ((eve: React.MouseEvent<HTMLInputElement>) => void) | null,
+}) {
+
+    max = max || 0;
+    min = min || 0;
+    value = value || 0;
+
+    const step = ((max - min) / 1000) || 1;
+
+    return (
+        <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            disabled={disabled || false}
+            onError={(error) => console.error(error)}
+            value={value}
+            style={{ '--range': `${((((value - min) / ((max - min))) * 100) || 0).toFixed(1)}%` } as React.CSSProperties}
+            onChange={(eve: React.ChangeEvent<HTMLInputElement>) => onChange?.((parseFloat(eve.target.value) || 0), eve)}
+            onMouseDown={(eve: React.MouseEvent<HTMLInputElement>) => onMouseDown?.(eve)}
+        />
+    )
+}
+
+export default InputRange;

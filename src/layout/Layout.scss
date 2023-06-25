@@ -1,0 +1,9 @@
+@import "../styles/_theme";
+
+.layout {
+    display: block;
+    width: 100%;
+    position: relative;
+    backdrop-filter: blur(8px);
+    background-color: $rgbaBgColor18;
+}
