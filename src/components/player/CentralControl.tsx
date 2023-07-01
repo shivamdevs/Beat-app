@@ -1,19 +1,24 @@
 import React from 'react';
-import usePlayPause from '../../core/hooks/usePlayPause';
-import useNavigateSongPrevious from '../../core/hooks/useNavigateSongPrevious';
-import useNavigateSongNext from '../../core/hooks/useNavigateSongNext';
-import { GiNextButton, GiPauseButton, GiPlayButton, GiPreviousButton } from 'react-icons/gi';
 import Tippy from '@tippyjs/react';
+import usePlayerState from '../../core/audio/hooks/usePlayerState';
+import useHasPrevious from '../../core/audio/hooks/useHasPrevious';
+import useHasNext from '../../core/audio/hooks/useHasNext';
+import useSongBufferState from '../../core/audio/hooks/useSongBufferState';
+import { GiNextButton, GiPauseButton, GiPlayButton, GiPreviousButton } from 'react-icons/gi';
 import LoadSVG from '../common/LoadSVG';
-import useSongBufferState from '../../core/hooks/useSongBufferState';
+import togglePlayPause from '../../core/audio/event/togglePlayPause';
+// import usePlayPause from '../../core/hooks/usePlayPause';
+// import useNavigateSongPrevious from '../../core/hooks/useNavigateSongPrevious';
+// import useNavigateSongNext from '../../core/hooks/useNavigateSongNext';
+// import useSongBufferState from '../../core/hooks/useSongBufferState';
 
 function CentralControl() {
-    const [playPause, playing, isPlayable] = usePlayPause();
+    const [playing, isPlayable] = usePlayerState();
 
-    const [navigatePrevious, hasPrevious] = useNavigateSongPrevious();
-    const [navigateNext, hasNext] = useNavigateSongNext();
+    const [hasPrevious, navigatePrevious] = useHasPrevious();
+    const [hasNext, navigateNext] = useHasNext();
 
-    const isBuffering = useSongBufferState();
+    const [isBuffering] = useSongBufferState();
 
     return (
         <div className="central-control">
@@ -21,7 +26,7 @@ function CentralControl() {
                 <button type="button" disabled={!isPlayable || !hasPrevious} onClick={() => navigatePrevious()} className="round unique"><GiPreviousButton /></button>
             </Tippy>
             <Tippy content={playing ? "Pause" : "Play"}>
-                <button type="button" disabled={!isPlayable || isBuffering} className="round big scale unique play-pause" onClick={playPause}>
+                <button type="button" disabled={!isPlayable || isBuffering} className="round big scale unique play-pause" onClick={togglePlayPause}>
                     {playing ? <GiPauseButton /> : <GiPlayButton />}
                     <span data-loading={isBuffering}><LoadSVG color="#fffc" stroke={3} /></span>
                 </button>

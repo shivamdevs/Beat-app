@@ -1,7 +1,8 @@
 import React from "react";
-import { AppContextTypes } from "./types";
+import AppContextType from "../types/AppContext";
+import { initialSetting } from "../types/AppSetting";
 
-const AppContext = React.createContext<AppContextTypes>({
+const AppContext = React.createContext<AppContextType>({
     user: null,
     state: {
         loading: true,
@@ -19,12 +20,11 @@ const AppContext = React.createContext<AppContextTypes>({
             source: () => { },
         }
     },
-    dialog: {
-        account: false,
-        $set: {
-            account: () => { },
-        }
-    },
+    dialog: {},
+    setDialog: () => { },
+
+    setting: initialSetting,
+    setSetting: () => { },
 });
 
 export default AppContext;

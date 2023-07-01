@@ -13,7 +13,7 @@ function ConnectAccount() {
     const [signInWithFacebook, , fbLoading, fbError] = useSignInWithFacebook(firebase.auth);
 
     return (
-        <Dialog className="dialog-create-account" innerClassName="container" onClose={null}>
+        <Dialog id="account" className="dialog-create-account" innerClassName="container" onClose={null}>
             <h2>Connect your Account</h2>
             <p>Connect your google account with <span>{AppData.name}</span> to save your favorite songs or create your own playlist.</p>
             <button type="button" onClick={() => signInWithGoogle()} disabled={glLoading || fbLoading}>

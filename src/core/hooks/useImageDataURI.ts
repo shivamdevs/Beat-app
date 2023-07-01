@@ -5,10 +5,14 @@ export default function useImageDataURI(imageSource?: string): [string | null, (
     const [dataURI, setDataURI] = React.useState<string | null>(null);
 
     function getImageSource(source?: string): void {
-        (source || imageSource) ? imageDataURI(source || imageSource || '').then((result) => {
+        (source) ? imageDataURI(source).then((result) => {
             setDataURI(result);
         }) : setDataURI(null);
     }
+
+    React.useEffect(() => {
+        getImageSource(imageSource);
+    }, [imageSource]);
 
     return [dataURI, getImageSource];
 }

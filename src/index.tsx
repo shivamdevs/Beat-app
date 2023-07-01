@@ -27,7 +27,7 @@ root.render(
             <OasisMenuProvider theme="space" toggle trigger="click">
                 <Wrap />
             </OasisMenuProvider>
-            <Toaster position="bottom-center" containerStyle={{ top: 76, bottom: 116 }} />
+            <Toaster position="bottom-center" reverseOrder containerStyle={{ top: 76, bottom: 116 }} />
         </BrowserRouter>
     </React.StrictMode>
 );

@@ -13,8 +13,7 @@ dialog {
     }
 
     &::backdrop {
-        background-color: #0007;
-        backdrop-filter: blur(2px);
+        animation: dialog-opening-backdrop 0.01s linear forwards;
     }
 
     &>button {
@@ -59,5 +58,12 @@ dialog {
     100% {
         scale: 1;
         opacity: 1;
+    }
+}
+
+@keyframes dialog-opening-backdrop {
+    100% {
+        background-color: #0007;
+        backdrop-filter: blur(2px);
     }
 }

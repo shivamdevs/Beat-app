@@ -2,9 +2,8 @@ import React from 'react';
 import { useAppContext } from '../../app/AppContext';
 import imageDataURI from '../../function/imageDataURI';
 
-export default function useSongBackgroundImage(): null {
+export default function useBodySongBackgroundImage(): null {
     const { player: { song } } = useAppContext();
-
     React.useEffect((): void => {
         if (song) {
             const bgImage: string | undefined = song.image.find(img => img.quality === "500x500")?.link;

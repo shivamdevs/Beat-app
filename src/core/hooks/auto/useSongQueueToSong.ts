@@ -1,18 +1,18 @@
 import React from 'react';
 import { useAppContext } from '../../app/AppContext';
+import Song from '../../types/Song';
 
-export default function useSongQueueToSong() {
+export default function useSongQueueToSong(): null {
 
     const { player: { queue, index, song, $set: { song: setSong } } } = useAppContext();
 
-    React.useEffect(() => {
+    React.useEffect((): void => {
         if (queue && index >= 0) {
-            const newSong = queue?.[index];
+            const newSong: Song = queue?.[index];
             if (newSong) {
                 if (song?.id !== newSong.id) {
                     setSong(newSong);
                     console.log(newSong);
-                    
                 }
             } else {
                 setSong(null);

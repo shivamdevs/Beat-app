@@ -47,6 +47,31 @@
                 background-size: cover;
                 border-radius: 5px;
                 background-color: #fff4;
+                position: relative;
+                overflow: hidden;
+
+                button {
+                    position: absolute;
+                    inset: 0;
+                    background-color: #0006;
+                    border: none;
+                    opacity: 0;
+                    border-radius: 4px;
+                    font-size: 20px;
+                    padding: 0;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    visibility: hidden;
+                    transition: 0.2s;
+
+                    &:is(:hover, :focus-visible) {
+                        backdrop-filter: blur(4px);
+                    background-color: #000a;
+                        cursor: pointer;
+                        font-size: 30px;
+                    }
+                }
             }
 
             .song-info {
@@ -119,6 +144,11 @@
                 }
             }
         }
+
+        .song-options {
+            justify-content: flex-end;
+            gap: 10px;
+        }
     }
 
     .range-box {
@@ -169,10 +199,15 @@
                 border-radius: .5em;
             }
         }
+
+        &.volume-range {
+            max-width: 80px;
+        }
     }
 
 
-    &:hover {
-        
+    &:is(:hover, :focus-within) .bottom-controls .song-info-card .image button {
+        visibility: visible;
+        opacity: 1;
     }
 }

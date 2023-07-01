@@ -6,21 +6,23 @@ function InputRange({
     value = 0,
     disabled = false,
     onChange = null,
+    divisor = 1000,
     onMouseDown = null,
 }: {
-    min?: number | null,
-    max?: number | null,
-    value?: number | null,
-    disabled?: boolean,
-    onChange?: ((val: number, eve: React.ChangeEvent<HTMLInputElement>) => void) | null,
-    onMouseDown?: ((eve: React.MouseEvent<HTMLInputElement>) => void) | null,
+    min?: number | null;
+    max?: number | null;
+    value?: number | null;
+    disabled?: boolean;
+    divisor?: number;
+    onChange?: ((val: number, eve: React.ChangeEvent<HTMLInputElement>) => void) | null;
+    onMouseDown?: ((eve: React.MouseEvent<HTMLInputElement>) => void) | null;
 }) {
 
     max = max || 0;
     min = min || 0;
     value = value || 0;
 
-    const step = ((max - min) / 1000) || 1;
+    const step = ((max - min) / (divisor || 1000)) || 1;
 
     return (
         <input

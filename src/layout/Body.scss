@@ -5,6 +5,12 @@
 }
 
 #main {
+    display: flex;
     width: 100%;
+    flex-wrap: nowrap;
     position: relative;
+}
+
+#article {
+    flex: 1;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface PropTypes {
-    size?: number;
+    size?: number | string;
     stroke?: number;
     backStroke?: number;
     duration?: number;

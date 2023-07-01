@@ -2,19 +2,21 @@ import React from 'react';
 import { useAppContext } from '../../core/app/AppContext';
 import "./Dialog.scss";
 import { MdClear } from 'react-icons/md';
+import DialogType from '../../core/types/Dialog';
 
 interface PropType {
     children: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | ((_ref: HTMLDialogElement | null) => (string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null));
     className?: string | undefined;
     innerClassName?: string | undefined;
     onClose?: (() => void) | null;
+    id: keyof DialogType;
 };
 
-function Dialog({ children, className = "", innerClassName = "", onClose = null }: PropType) {
+function Dialog({ children, className = "", id, innerClassName = "", onClose = null }: PropType) {
     const dialogRef = React.useRef<HTMLDialogElement>(null);
     const [dialogState, setDialogState] = React.useState<HTMLDialogElement | null>(dialogRef.current);
 
-    const { dialog: { $set: { account } } } = useAppContext();
+    const { setDialog } = useAppContext();
 
     React.useEffect(() => {
         const dialog = dialogRef.current;
@@ -23,14 +25,14 @@ function Dialog({ children, className = "", innerClassName = "", onClose = null 
             !dialog.open && dialog.showModal();
 
             const handleClose = () => {
-                account(false);
+                setDialog(id, false);
                 onClose?.();
             };
 
             dialog.addEventListener("close", handleClose);
             return () => dialog.removeEventListener("close", handleClose);
         }
-    }, [account, onClose]);
+    }, [id, onClose, setDialog]);
 
     const handleOuterClick = (e: React.MouseEvent<HTMLDialogElement>) => {
         const dialog = dialogRef.current;

@@ -3,22 +3,22 @@ import "./Layout.scss";
 import Header from '../components/Header';
 import Body from './Body';
 import Player from '../components/player/Player';
-import useSongBackgroundImage from '../core/hooks/service/useSongBackgroundImage';
-import useSongQueueToSong from '../core/hooks/service/useSongQueueToSong';
-import Dialogs from './Dialogs';
-import usePlayerAutoEnded from '../core/hooks/service/usePlayerAutoEnded';
-import useSaveSongQueue from '../core/hooks/service/useSaveSongQueue';
-import useGetSavedSongQueue from '../core/hooks/service/useGetSavedSongQueue';
+// import useSongBackgroundImage from '../core/hooks/service/useSongBackgroundImage';
+// import useSongQueueToSong from '../core/hooks/service/useSongQueueToSong';
+// import usePlayerAutoEnded from '../core/hooks/service/usePlayerAutoEnded';
+// import useSaveSongQueue from '../core/hooks/service/useSaveSongQueue';
+// import useGetSavedSongQueue from '../core/hooks/service/useGetSavedSongQueue';
 
+import Dialogs from './Dialogs';
 
 function Layout() {
 
-    useSongQueueToSong();
-    useSongBackgroundImage();
+    // useSongQueueToSong();
+    // useSongBackgroundImage();
 
-    usePlayerAutoEnded();
-    useGetSavedSongQueue();
-    useSaveSongQueue();
+    // usePlayerAutoEnded();
+    // useGetSavedSongQueue();
+    // useSaveSongQueue();
 
     React.useEffect(() => {
         (window as any).loadingOverlayRemove();

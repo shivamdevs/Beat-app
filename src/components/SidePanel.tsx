@@ -1,7 +1,8 @@
 import React from 'react';
 import "./SidePanel.scss";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useAppContext } from '../core/app/AppContext';
+import useHashNavigate from '../core/hooks/useHashNavigate';
 
 function SidePanel() {
     const { user, state: { loading } } = useAppContext();
@@ -33,7 +34,7 @@ function SidePanel() {
 export default SidePanel;
 
 function NavBtn({ name, to, onClick }: { name: string, to?: string, onClick?: () => void }) {
-    const navigate = useNavigate();
+    const navigate = useHashNavigate();
     const location = useLocation();
     const btnRef = React.useRef<HTMLButtonElement>(null);
 

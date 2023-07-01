@@ -10,7 +10,7 @@ import { TbPlaylist } from 'react-icons/tb';
 
 function Header() {
     const navigate = useNavigate();
-    const { user, state: { loading }, dialog: { $set: { account } } } = useAppContext();
+    const { user, state: { loading }, setDialog } = useAppContext();
 
 
     return (
@@ -60,7 +60,7 @@ function Header() {
                         <OasisMenuItem onClick={user.logout} icon={<MdOutlineLogout />} content="Logout" />
                     </OasisMenu>
                 </>}
-                {!loading && !user && <button type="button" onClick={() => account(true)} className="login">Login</button>}
+                {!loading && !user && <button type="button" onClick={() => setDialog("account", true)} className="login">Login</button>}
             </div>
         </header>
     );

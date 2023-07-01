@@ -3,6 +3,7 @@ import "./Player.scss";
 import Seeker from './Seeker';
 import CentralControl from './CentralControl';
 import LeftSongInfo from './LeftSongInfo';
+import RightMoreControl from './RightMoreControl';
 
 function Player() {
     return (
@@ -11,11 +12,7 @@ function Player() {
             <div className="bottom-controls">
                 <LeftSongInfo />
                 <CentralControl />
-                <div className="flex-grid">
-                    <div className="flex-wrap">
-                        Hello
-                    </div>
-                </div>
+                <RightMoreControl />
             </div>
         </section>
     );

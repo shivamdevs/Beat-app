@@ -1,0 +1,53 @@
+@import "../../styles/_theme";
+
+#toolkit-panel {
+    height: calc(100dvh - 160px);
+    position: sticky;
+    top: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    backdrop-filter: blur(8px);
+
+    .close-display:disabled {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .tap-tile {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden auto;
+        background-color: $rgbaBgColor25;
+    }
+
+    .displays {
+        background-color: $rgbaBgColor39;
+        position: relative;
+        overflow: hidden;
+
+        &:has([data-visible=true]) {
+            width: 320px;
+        }
+
+        >iframe {
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            transition: 0.5s;
+            background: none;
+            opacity: 0;
+
+            &[data-visible=true] {
+                opacity: 1;
+            }
+        }
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
